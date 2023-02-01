@@ -1,8 +1,4 @@
-const fs = require('fs');
-const inquirer = require('inquirer');
-const index = require('../index')
-
-
+// Grabs License Badge
 function renderLicenseBadge(license) {
   let licenseBadge = '';
   if (license === 'Apache License 2.0') {
@@ -22,7 +18,7 @@ function renderLicenseBadge(license) {
   return licenseBadge;
 };
 
-
+// Grabs link to license website/information about license
 function renderLicenseLink(license) {
   let licenseLink = '';
   if (license === 'Apache License 2.0') {
@@ -42,7 +38,7 @@ function renderLicenseLink(license) {
   return licenseLink;
 }
 
-
+// If there is a license this function will generate a license section
 function renderLicenseSection(license) {
   let licenseSection = '';
   if (license === 'None') {
@@ -54,7 +50,7 @@ function renderLicenseSection(license) {
   return licenseSection;
 }
 
-
+// Function that generates the text of the markdown file (README)
 function generateMarkdown(answers) {
   return `
   

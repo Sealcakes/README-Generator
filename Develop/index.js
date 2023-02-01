@@ -1,9 +1,10 @@
+// Links to inquirer/file system/generate markdown script
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 
-
+// Question prompts for inquirer
 let questions = [
     {
         type: "input",
@@ -56,7 +57,7 @@ let questions = [
     }
 ];
 
-// TODO: Create a function to write README file
+// Function that creates the readme using the createFile callback
 const createReadMe = createFile => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./newReadme.md', createFile, err => {
@@ -71,11 +72,12 @@ const createReadMe = createFile => {
     });
 }
 
-
+// Initialize function for entire project, inputs the questions variable into inquirer and then uses the answers to generate the md file
 function init() {
     inquirer.prompt(questions)
     .then(function(answers) {
 
+        // Create File variable that inputs the returned promise from inquirer into the generateMarkdown function
         var createFile = generateMarkdown(answers);
         console.log(typeof createFile);
         createReadMe(createFile);
