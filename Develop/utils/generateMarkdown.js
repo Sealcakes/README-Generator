@@ -6,9 +6,9 @@ const index = require('../index')
 function renderLicenseBadge(license) {
   let licenseBadge = '';
   if (license === 'Apache License 2.0') {
-    licenseBadge = '![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';
+    licenseBadge = '![License: Apache License 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';
   } else if (license === 'BSD 3-Clause License') {
-    licenseBadge = '![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)';
+    licenseBadge = '![License: BSD 3-Clause License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)';
   } else if (license === 'GNU General Public License v3.0') {
     licenseBadge = '![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)';
   } else if (license === 'MIT License') {
@@ -54,10 +54,45 @@ function renderLicenseSection(license) {
   return licenseSection;
 }
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
 
+function generateMarkdown(answers) {
+  return `
+  
+  # Professional README Generator
+
+  ## ${renderLicenseSection(answers.projectLicense)} ${renderLicenseBadge(answers.projectLicense)}
+  ### ${renderLicenseLink(answers.projectLicense)}
+
+  ## Table of Contents
+  ### - [Project](#Project)
+  ### - [Description](#Description)
+  ### - [Installation](#Installation)
+  ### - [Project Usage](#ProjectUsage)
+  ### - [Project Contributions](#ProjectContributions)
+  ### - [Testing Instructions](#TestingInstructions)
+  ### - [License Info](#License)
+
+
+  ## Project
+  ### ${answers.projectTitle}
+
+  ## Description
+  ### ${answers.projectDescription}
+
+  ## Installtion
+  ### ${answers.projectInstallation}
+
+  ## Usage
+  ### ${answers.projectUsage}
+
+  ## Contributors
+  ### ${answers.projectContributors}
+
+  ## Testing Instructions
+  ### ${answers.projectTestInformation}
+
+  ## License Information
+  ### ${answers.projectLicense}
 `;
 }
 

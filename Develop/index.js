@@ -43,7 +43,7 @@ let questions = [
 
     {
         type: "list",
-        name: "License:",
+        name: "projectLicense",
         message: "What license are you using for this project?",
         choices: [
             "Apache License 2.0",
@@ -71,12 +71,12 @@ const createReadMe = createFile => {
     });
 }
 
-// TODO: Create a function to initialize app
+
 function init() {
     inquirer.prompt(questions)
     .then(function(answers) {
 
-        let createFile = generateMarkdown(answers);
+        var createFile = generateMarkdown(answers);
         console.log(typeof createFile);
         createReadMe(createFile);
     })
